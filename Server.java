@@ -32,6 +32,12 @@ public class Server {
             connection.send(new Message(MessageType.NAME_ACCEPTED));
             return userName;
         }
+
+        private void notifyUsers(Connection connection, String userName) throws IOException {
+            for (String name : connectionMap.keySet()) {
+                if (!(name.equals(userName))) connection.send(new Message(MessageType.USER_ADDED, name));
+            }
+        }
     }
 
     public static void main(String[] args) {
