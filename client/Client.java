@@ -7,6 +7,7 @@ import com.javarush.task.task30.task3008.MessageType;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
     protected Connection connection;
@@ -53,6 +54,20 @@ public class Client {
                 else if (message.getType() == MessageType.USER_ADDED) informAboutAddingNewUser(message.getData());
                 else if (message.getType() == MessageType.USER_REMOVED) informAboutDeletingNewUser(message.getData());
                 else throw new IOException("Unexpected MessageType");
+            }
+        }
+
+        public void run() {
+            String address = getServerAddress();
+            int port = getServerPort();
+
+            try {
+                Connection connection = new Connection(new Socket(address, port));
+                Client.this.connection = connection;
+                clientHandshake();
+                clientMainLoop();
+            } catch (Exception e) {
+                notifyConnectionStatusChanged(false);
             }
         }
     }
