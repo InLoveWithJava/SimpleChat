@@ -18,42 +18,6 @@ public class BotClient extends Client {
 
         @Override
         protected void processIncomingMessage(String message) {
-//            ConsoleHelper.writeMessage(message);
-//            String[] strings = message.split(": ");
-//            if (message == null || !message.contains(": ")) return;
-//            String name = strings[0].trim();
-//            String text = strings[1].trim();
-//            SimpleDateFormat simpleDateFormat = null;
-//            Calendar calendar = Calendar.getInstance();
-//            switch(text) {
-//                case "дата":
-//                    simpleDateFormat = new SimpleDateFormat("d.MM.YYYY");
-//                    break;
-//                case "день":
-//                    simpleDateFormat = new SimpleDateFormat("d");
-//                    break;
-//                case "месяц":
-//                    simpleDateFormat = new SimpleDateFormat("MMMM");
-//                    break;
-//                case "год":
-//                    simpleDateFormat = new SimpleDateFormat("YYYY");
-//                    break;
-//                case "время":
-//                    simpleDateFormat = new SimpleDateFormat("H:mm:ss");
-//                    break;
-//                case "час":
-//                    simpleDateFormat = new SimpleDateFormat("H");
-//                    break;
-//                case "минуты":
-//                    simpleDateFormat = new SimpleDateFormat("m");
-//                    break;
-//                case "секунды":
-//                    simpleDateFormat = new SimpleDateFormat("s");
-//                    break;
-//            }
-//            message = simpleDateFormat.format(calendar.getTime());
-//            if (!message.isEmpty())
-//                sendTextMessage("Информация для " + name + ": " + message);
             ConsoleHelper.writeMessage(message);
             if (message == null || !message.contains(": ")) return;
             String[] strings = message.split(": ");
