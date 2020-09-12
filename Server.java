@@ -71,11 +71,12 @@ public class Server {
     }
 
     public static void main(String[] args) {
+        ConsoleHelper.writeMessage("Введите номер порта: ");
         int port = ConsoleHelper.readInt();
         ServerSocket server = null;
         try {
             server = new ServerSocket(port);
-            System.out.println("Сервер запущен на порту " + server.getLocalPort());
+            ConsoleHelper.writeMessage("Сервер запущен на порту " + server.getLocalPort());
             while (true) {
                 Handler handler = new Handler(server.accept());
                 handler.start();
